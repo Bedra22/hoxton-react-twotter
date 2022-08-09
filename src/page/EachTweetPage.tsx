@@ -15,6 +15,8 @@ type TweetsInTwotter = {
 export function EachTweetPage() {
 
     const [EachTweet, setEachTweet] = useState<null | TweetsInTwotter>(null)
+    const [replies, setreplies] = useState([])
+
     const params = useParams()
 
     useEffect(() => {
@@ -22,7 +24,13 @@ export function EachTweetPage() {
             .then(resp => resp.json())
             .then(EachTweetFromserver => setEachTweet(EachTweetFromserver))
     }, [])
-    console.log('params:', params)
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/replies`)
+            .then(resp => resp.json())
+            .then(RepliesFromServer => setreplies(RepliesFromServer))
+    }, [])
+
 
     if (EachTweet === null) return (
         <div>Loading...</div>
@@ -45,24 +53,29 @@ export function EachTweetPage() {
                 </div>
             </div>
             <div className="tweet-replies">
-                <div className="profili-i-perdoruesit">
-                    <img src="https://images.pexels.com/photos/13095218/pexels-photo-13095218.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" />
-                    <h3>CoffeLover</h3>
-                </div>
-                <div className="replies-content">
-                    <p>OH MY GOD YOU ARE KIDDING 🤯🤯🤯</p>
-                </div>
-                <div className="tweet-replies-new-tweet-like">
-                    <img src="https://cdn-icons-png.flaticon.com/128/2462/2462719.png" />
-                    <img src="https://cdn-icons.flaticon.com/png/128/2734/premium/2734827.png?token=exp=1659998863~hmac=2efca6a9bb15a2bdfc24cc0ce3d5d6a9" />
-                    <img src="https://cdn-icons-png.flaticon.com/128/1077/1077035.png" />
-                    <img src="https://cdn-icons-png.flaticon.com/128/1828/1828959.png" />
-                    <img src="https://cdn-icons.flaticon.com/png/128/2567/premium/2567943.png?token=exp=1659998946~hmac=6ce9b386f96663f8ec8b8651a872f663" />
-                </div>
+                <ul>
+                    {replies.map(replay => (
+                        <li>
+                            <div className="profili-i-perdoruesit">
+                                <img src={replay.profilePic} />
+                                <h3>@{replay.username}</h3>
+                            </div>
+                            <div className="replies-content">
+                                <p>{replay.content}</p>
+                            </div>
+                            <div className="tweet-replies-new-tweet-like">
+                                <img src="https://cdn-icons-png.flaticon.com/128/2462/2462719.png" />
+                                <img src="https://cdn-icons.flaticon.com/png/128/2734/premium/2734827.png?token=exp=1659998863~hmac=2efca6a9bb15a2bdfc24cc0ce3d5d6a9" />
+                                <img src="https://cdn-icons-png.flaticon.com/128/1077/1077035.png" />
+                                <img src="https://cdn-icons-png.flaticon.com/128/1828/1828959.png" />
+                                <img src="https://cdn-icons.flaticon.com/png/128/2567/premium/2567943.png?token=exp=1659998946~hmac=6ce9b386f96663f8ec8b8651a872f663" />
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+
+
             </div>
-        </div>
+        </div >
     )
 }
-
-// <Link to={`/home/${komente.id}`}></Link>
-

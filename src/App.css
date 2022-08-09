@@ -329,7 +329,7 @@
 
 .each-tweets-content {
     padding: 20px;
-    border-bottom: solid 1px rgba(162, 162, 162, 0.384);
+    border: solid 2px rgba(128, 128, 128, 0.647);
 }
 
 .each-tweet-holder {
@@ -368,6 +368,15 @@
     border-bottom: solid 1px rgba(162, 162, 162, 0.384);
 }
 
+.tweet-replies ul {
+    list-style-type: none;
+}
+
+.tweet-replies li {
+    padding: 10px;
+    border-bottom: solid 1px rgba(162, 162, 162, 0.384);
+}
+
 .profili-i-perdoruesit {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -383,6 +392,12 @@
 .profili-i-perdoruesit h3 {
     text-align: justify;
     padding-top: 10px;
+}
+
+.profile-part {
+    padding-bottom: 20px;
+    border-bottom: solid 1px rgba(128, 128, 128, 0.578);
+
 }
 
 .replies-content {
@@ -403,4 +418,64 @@
     width: 20px;
     height: 20px;
     margin: 20px;
+}
+
+.profile-part {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    margin: 10px;
+    gap: 10px;
+}
+
+.main-pic img {
+    width: 100%;
+    height: 300px
+}
+
+.profile-more {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.profile-more img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.profile-more button {
+    width: 200px;
+    border-radius: 30px;
+    place-content: end;
+    font-size: 18px;
+}
+
+.profile-more button:hover {
+    background-color: #1DA1F2;
+    border: transparent;
+    color: white;
+}
+
+.username {
+    padding-left: 20px;
+}
+
+.likes-tweets-replies {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.likes-tweets-replies a:hover {
+    background-color: rgba(148, 148, 148, 0.378);
+}
+
+.tweet-holder img {
+    padding: 20px;
+    width: 100%
 }

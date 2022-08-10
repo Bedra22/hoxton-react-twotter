@@ -252,9 +252,11 @@
     grid-template-rows: auto 1fr auto;
     gap: 1rem;
     color: black;
+    text-decoration: none;
+
 }
 
-.tweets-content link {
+.tweets-content Link {
     text-decoration: none;
     color: black;
 }
